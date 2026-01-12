@@ -13,6 +13,7 @@ import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import org.testng.internal.TestResult;
+import utils.EmailUtils;
 import utils.ExtentReportManager;
 import utils.Log;
 
@@ -29,6 +30,8 @@ public class BaseTest {
     @AfterSuite
     public void tearDownReport() {
         extent.flush();
+        String reportPath=ExtentReportManager.reportPath;
+        EmailUtils.sendTestReport(reportPath);
     }
 
     @BeforeMethod

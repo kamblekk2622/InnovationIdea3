@@ -15,11 +15,12 @@ import java.util.Date;
 public class ExtentReportManager {
     private static ExtentReports extent;
     private static ExtentTest test;
+    public  static String reportPath;
 
     public static ExtentReports getReportInstance() {
         if (extent == null) {
             String timestamp = new SimpleDateFormat("yyyyy-mm-dd_HH-mm-ss").format(new Date());
-            String reportPath = "report/ExtentReport_" + timestamp + ".html";
+            reportPath = "report/ExtentReport_" + timestamp + ".html";
             ExtentSparkReporter reporter = new ExtentSparkReporter(reportPath);
             reporter.config().setDocumentTitle("Automation Test Report");
             reporter.config().setReportName("Test Execution Report");
